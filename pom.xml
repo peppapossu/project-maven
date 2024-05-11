@@ -66,13 +66,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.1.0</version>
-                <configuration>
-                    <groupId>com.javarush</groupId>
-                    <artifactId>desktop-game-engine</artifactId>
-                    <version>1.0</version>
-                    <file>${basedir}/lib/desktop-game-engine.jar</file>
-                    <packaging>jar</packaging>
-                </configuration>
+<!-- Есть ли необходимость прописывать автоматическую установку или достаточно установить один раз вручную?
+В официальной документации не нашел автоматическую установку, но сам факт такого описания (15 строк ниже) мне понравился.
+Единственное, что не понял. Блок configuration по идее должен быть внутри execution,
+но все успешно устанавливается даже если его разместить за пределами executions, то есть прямо здесь-->
                 <executions>
                     <execution>
                         <id>install</id>
@@ -80,6 +77,13 @@
                             <goal>install-file</goal>
                         </goals>
                         <phase>generate-resources</phase>
+                        <configuration>
+                            <groupId>com.javarush</groupId>
+                            <artifactId>desktop-game-engine</artifactId>
+                            <version>1.0</version>
+                            <file>${basedir}/lib/desktop-game-engine.jar</file>
+                            <packaging>jar</packaging>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
