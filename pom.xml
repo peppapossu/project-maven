@@ -40,10 +40,7 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
-
 
     <build>
         <resources>
@@ -66,17 +63,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.1.0</version>
-<!-- Есть ли необходимость прописывать автоматическую установку или достаточно установить один раз вручную?
-В официальной документации не нашел автоматическую установку, но сам факт такого описания (15 строк ниже) мне понравился.
-Единственное, что не понял. Блок configuration по идее должен быть внутри execution,
-но все успешно устанавливается даже если его разместить за пределами executions, то есть прямо здесь-->
                 <executions>
                     <execution>
                         <id>install</id>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
-                        <phase>generate-resources</phase>
+                        <phase>validate</phase>
                         <configuration>
                             <groupId>com.javarush</groupId>
                             <artifactId>desktop-game-engine</artifactId>
@@ -147,8 +140,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
 </project>
